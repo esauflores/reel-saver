@@ -1,0 +1,37 @@
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    {% if reel.thumbnail_url %}
+        <img class="rounded-t-lg w-full h-48 object-cover"
+             src="{{ url_for('storage.serve_reel_image', filename=reel.thumbnail_url) }}"
+             alt="Reel image"
+             height="192"
+             width="256">
+    {% else %}
+        <img class="rounded-t-lg w-full h-48 object-cover"
+             src="{{ url_for('static', filename='images/default_reel.jpg') }}"
+             alt="Reel image"
+             height="192"
+             width="256">
+    {% endif %}
+    <div class="p-5">
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-justify">
+            {# limit caption to 200 char #}
+            {{ reel.caption[:200] }}{{ '...' if reel.caption|length > 200 else '' }}
+        </p>
+        <div class="flex items-center justify-between mt-4">
+            <div class="flex items-center gap-2">
+                <!-- view blue button -->
+                <a href="{{ reel.url }}"
+                   class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    View
+                </a>
+                <!-- delete red button -->
+                <form action="{{ url_for('reels.delete_reel', id=reel.id) }}" method="get">
+                    <button type="submit"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-500 rounded-lg hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

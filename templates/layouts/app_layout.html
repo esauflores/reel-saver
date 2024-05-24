@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Description of the page" />
+        <meta name="keywords" content="keyword1, keyword2, keyword3">
+        <title>
+            {% block title %}
+                Blind match
+            {% endblock title %}
+        </title>
+        {# Styles #}
+        <link href="{{ url_for('static', filename='css/flowbite.min.css') }}"
+              rel="stylesheet" />
+        {# Scripts #}
+        <script src="{{ url_for('static', filename='js/flowbite.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/tailwind.js') }}"></script>
+    </head>
+    <body>
+        <div class="flex flex-col h-screen w-full">
+            {% include "app_layout/navbar.html" %}
+            <main class="w-full flex-1">
+                {% block content %}
+                {% endblock content %}
+            </main>
+            {% include "app_layout/footer.html" %}
+        </div>
+    </body>
+</html>

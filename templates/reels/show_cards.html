@@ -1,0 +1,15 @@
+{% extends "layouts/app_layout.html" %}
+{% block title %}
+    Reels
+{% endblock title %}
+{% block content %}
+    <div class="flex flex-wrap pb-4 pl-5 ml-6">
+        <a href='{{ url_for("reels.add_reel") }}'
+           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 mr-4">Add reel</a>
+    </div>
+    <div class="flex flex-wrap pt-4 pl-5 ml-2 md:pl-0 md:ml-4 lg:pl-5 lg:ml-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {% for reel in reels %}
+            {% include "reels/card_template.html" %}
+        {% endfor %}
+    </div>
+{% endblock content %}

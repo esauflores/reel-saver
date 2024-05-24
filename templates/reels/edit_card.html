@@ -1,0 +1,82 @@
+{% extends "layouts/app_layout.html" %}
+{% block title %}
+    Reels
+{% endblock title %}
+{% block content %}
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6 py-4">
+        <!-- back button -->
+        <a href='{{ url_for("cards.show_cards") }}'
+           class="ml-6 inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-700 border border-blue-700 rounded-md shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-600 dark:text-white dark:border-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="h-6 w-6 mr-2"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back
+        </a>
+        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+            <div class="max-w-xl">
+                <header>
+                    <h2 class="text-lg font-medium text-gray-900 pb-6">Edit flashcard</h2>
+                </header>
+                <form method="post"
+                      action='{{ url_for("cards.edit_card", card_id=card.id) }}'
+                      enctype="multipart/form-data">
+                    <div class="mb-6">
+                        <label for="name"
+                               class="block mb-2 text-sm text-gray-600 dark:text-gray-400">
+                            Name (question/word/phrase)
+                        </label>
+                        <input type="text"
+                               name="name"
+                               id="name"
+                               value="{{ card.name }}"
+                               placeholder="Enter the name of the flashcard"
+                               class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
+                               required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="translation"
+                               class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Translation (answer)</label>
+                        <input type="text"
+                               name="translation"
+                               value="{{ card.translation }}"
+                               id="translation"
+                               placeholder="Enter the translation of the flashcard"
+                               class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
+                               required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="description"
+                               class="block mb-2 text-sm text-gray-600 dark:text-gray-400">
+                            Description (optional)
+                        </label>
+                        <textarea name="description" id="description" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white">
+                                 {{- card.description -}}
+                                  </textarea>
+                    </div>
+                    <div class="mb-6">
+                        <label for="image"
+                               class="block mb-2 text-sm text-gray-600 dark:text-gray-400">
+                            Upload New Image (Optional)
+                        </label>
+                        <input type="file"
+                               name="image"
+                               id="image"
+                               accept=".jpg, .jpeg, .png, .gif"
+                               class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+                    </div>
+                    <!-- Submit button -->
+                    <div class="mb-6">
+                        <button type="submit"
+                                class="inline-flex items-center px-4 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Edit flashcard
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

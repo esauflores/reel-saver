@@ -1,0 +1,14 @@
+python-dotenv
+ruff
+pre-commit
+Flask
+Flask-SQLAlchemy
+flask_login
+flask_wtf
+djlint
+shed
+bcrypt
+email_validator
+instagrapi 
+pillow
+flask_cors

@@ -9,6 +9,7 @@ djlint
 shed
 bcrypt
 email_validator
-instagrapi 
 pillow
 flask_cors
+yt-dlp
+psycopg2

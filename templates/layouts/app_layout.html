@@ -19,12 +19,11 @@
     </head>
     <body>
         <div class="flex flex-col h-screen w-full">
-            {% include "app_layout/navbar.html" %}
+            {% include "layouts/navbar.html" %}
             <main class="w-full flex-1">
                 {% block content %}
                 {% endblock content %}
             </main>
-            {% include "app_layout/footer.html" %}
         </div>
     </body>
 </html>

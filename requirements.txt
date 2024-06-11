@@ -13,3 +13,4 @@ pillow
 flask_cors
 yt-dlp
 psycopg2-binary
+gunicorn

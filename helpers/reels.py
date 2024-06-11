@@ -84,6 +84,7 @@ def get_reel_by_url(reel_url: str) -> tuple:
                 }
             ],
             "logger": logging.getLogger("yt-dlp"),
+            "cookiesfrombrowser": "chrome",
         }
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:

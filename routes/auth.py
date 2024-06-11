@@ -65,8 +65,8 @@ def sign_in():
         return render_template("auth/sign_in.html", form=sign_in_form)
 
 
-@auth_bp.route("/sign_up", methods=["GET", "POST"])
-def sign_up():
+# @auth_bp.route("/sign_up", methods=["GET", "POST"])
+# def sign_up():
     sign_up_form: UserSignUpForm = UserSignUpForm()
 
     if request.method == "POST":

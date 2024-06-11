@@ -4,13 +4,17 @@ from flask import Flask
 from flask_cors import CORS
 
 from helpers import env
+from helpers.login import login_manager
 from models import db
-from routes import home_bp, reels_bp, storage_bp
+from routes import home_bp, reels_bp, storage_bp, auth_bp
 
 
 def create_app():
     app = Flask(__name__, static_folder="static", template_folder="templates")
     app.secret_key = env.get_env("APP_SECRET_KEY")
+
+    login_manager.init_app(app)
+    login_manager.login_view = "auth.sign_in"
 
     database_url = env.get_env("DATABASE_URL")
     print(f"Connecting to database at {database_url}")
@@ -30,8 +34,9 @@ def create_app():
     # app.add_url_rule("/", "home", home)
     # app.register_blueprint(auth_bp)
 
-    app.register_blueprint(reels_bp)
+    app.register_blueprint(auth_bp)
     app.register_blueprint(home_bp)
+    app.register_blueprint(reels_bp)
     app.register_blueprint(storage_bp)
 
     return app
